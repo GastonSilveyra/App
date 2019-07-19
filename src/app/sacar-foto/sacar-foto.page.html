@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-button expand="full" block (click)="getPicture()">Toma una foto</ion-button>
-  <img [src]="image" *ngIf="image"/>
+  <ion-button expand="full" 
+              block 
+              (click)="onClick()">
+  Toma una foto
+  </ion-button>
 </ion-content>

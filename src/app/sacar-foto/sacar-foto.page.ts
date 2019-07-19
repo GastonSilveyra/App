@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sacar-foto',
@@ -10,7 +11,7 @@ export class SacarFotoPage implements OnInit {
 
   image: string = null;
 
-  constructor(private camera: Camera) { }
+  constructor(private camera: Camera, private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,6 +30,10 @@ export class SacarFotoPage implements OnInit {
     .catch(error =>{
       console.error( error );
     });
+  }
+
+  onClick() {
+    this.router.navigate(['/foto-pie']);
   }
 
 }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SacarFotoPage implements OnInit {
 
-  image: string = null;
+  image = '0';
 
   constructor(private camera: Camera, private router: Router) { }
 

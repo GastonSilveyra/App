@@ -6,8 +6,12 @@
 
 <ion-content padding>
   <ion-button expand="full" 
-              block 
-              (click)="onClick()">
+              block
+              (click)= "getPicture()">
   Toma una foto
+  </ion-button>
+  <ion-button expand="full" 
+              [routerLink]="['/foto-pie',image]">
+    Siguiente
   </ion-button>
 </ion-content>

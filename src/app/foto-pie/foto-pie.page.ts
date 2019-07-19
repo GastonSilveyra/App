@@ -9,12 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FotoPiePage implements OnInit {
 
-  image: string = null;
+  image: string;
 
   constructor(private rutaActiva: ActivatedRoute) { }
 
   ngOnInit() {
-    this.image = this.rutaActiva.snapshot.params.image;
+    // this.image = this.rutaActiva.snapshot.params.image;
+
+    if ( this.rutaActiva.snapshot.params.image !== '0') {
+      this.image =  this.rutaActiva.snapshot.params.image;
+    } else {
+      this.image = '/assets/shapes.svg';
+    }
   }
 
 }

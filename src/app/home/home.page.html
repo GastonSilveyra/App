@@ -6,22 +6,33 @@
 
 <ion-content padding>
 <ion-item>
-  <ion-label>
+  <ion-label position="floating">
     Email
   </ion-label>
   <ion-input type="text" [(ngModel)]="user.email"></ion-input>
 </ion-item>
 
 <ion-item>
-  <ion-label>
+  <ion-label position="floating">
     Contraseña
   </ion-label>
   <ion-input type="password" [(ngModel)]="user.password"></ion-input>
 </ion-item>
 
-<ion-item-divider>
-  <ion-button size="large" (click)="onLogin()">Login</ion-button>
-  <ion-button size="large" href="/register">Registrarse</ion-button>
-</ion-item-divider>
+<ion-row>
+
+  <ion-col>
+    <ion-button expand="full" (click)="onLogin()">
+      Login
+    </ion-button>
+  </ion-col>
+
+  <ion-col>
+    <ion-button expand="full" routerLink="/register">
+      Registrarse
+    </ion-button>
+  </ion-col>
+
+</ion-row>
 
 </ion-content>

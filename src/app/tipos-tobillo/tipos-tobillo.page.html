@@ -6,4 +6,44 @@
 
 <ion-content>
 
-</ion-content>
+    <ion-grid class="grid-center">
+      
+      <ion-slides pager="true">
+    
+        <ion-slide *ngFor="let slide of slides">
+      
+          <div class="slide-img-padding">
+            
+            <img [src]="slide.img">
+      
+          </div>
+      
+          <div>
+      
+            <h3 [innerHTML]="slide.titulo"></h3>
+      
+          </div>
+      
+        </ion-slide>
+    
+      </ion-slides>
+    
+      <ion-row>
+    
+          <ion-col>
+            <ion-button expand="full" routerLink="/foto-tobillo" shape="round" mode="ios">
+              Atras
+            </ion-button>
+          </ion-col>
+        
+          <ion-col>
+            <ion-button expand="full" routerLink="/formulario" shape="round" mode="ios">
+              Siguiente
+            </ion-button>
+          </ion-col>
+        
+        </ion-row>
+  
+    </ion-grid>
+  
+  </ion-content>

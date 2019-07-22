@@ -11,7 +11,7 @@ import {User} from '../shared/user.class';
 export class HomePage implements OnInit {
 
 user : User =new User();
-  constructor(private router:Router, private authSvc: AuthService) {}
+  constructor(private router: Router, private authSvc: AuthService) {}
 
   ngOnInit() {
   }
@@ -20,7 +20,7 @@ user : User =new User();
     const user= await this.authSvc.onLogin(this.user);
     if(user){
       console.log('Successfully logged in!');
-      this.router.navigateByUrl('/sacar-foto');
+      this.router.navigateByUrl('/foto-pie');
     }
   }
 }

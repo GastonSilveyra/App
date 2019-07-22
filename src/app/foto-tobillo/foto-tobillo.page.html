@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>foto-tobillo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <img [src]="imageTobillo" *ngIf="imageTobillo"/>
+
+</ion-content>
+
+<ion-footer>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  
+      <ion-fab-list side="top">
+        <ion-fab-button> <ion-icon name="arrow-forward" routerLink="/tipos-tobillo"></ion-icon> </ion-fab-button>
+        <ion-fab-button> <ion-icon name="camera" (click)="getPicture()"></ion-icon> </ion-fab-button>
+      </ion-fab-list>
+  </ion-fab>
+</ion-footer>
+

@@ -7,6 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TiposTobilloPage implements OnInit {
 
+  slides = [
+    {
+      img: 'assets/img/neutro.jpg',
+      titulo: 'Neutro.'
+    },
+    {
+      img: 'assets/img/pronacion.jpg',
+      titulo: 'Pronación.'
+    },
+    {
+      img: 'assets/img/supinacion.jpg',
+      titulo: 'Supinación.'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {

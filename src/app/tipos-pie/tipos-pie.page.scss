@@ -1,0 +1,26 @@
+ion-slide {
+    display: block;
+}
+
+ion-slides {
+    --bullet-background: grey;
+    --bullet-background-active: #889082;
+}
+
+.grid-center {
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.slide-img-padding {
+    padding: 30px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: lighter;
+    margin-bottom: 60px;
+}

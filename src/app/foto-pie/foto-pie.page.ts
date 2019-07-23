@@ -8,7 +8,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 })
 export class FotoPiePage implements OnInit {
 
-  imagePie: string = null;
+  imagePie = 'hola';
 
   constructor(private camera: Camera) {
    }
@@ -31,5 +31,9 @@ export class FotoPiePage implements OnInit {
     .catch(error =>{
       console.error( error );
     });
+  }
+
+  public getImagePie() {
+    return this.imagePie;
   }
 }

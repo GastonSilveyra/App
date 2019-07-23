@@ -32,4 +32,8 @@ export class FotoTobilloPage implements OnInit {
       console.error( error );
     });
   }
+
+  public getImageTobillo() {
+    return this.imageTobillo;
+  }
 }

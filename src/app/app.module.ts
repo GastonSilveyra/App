@@ -24,8 +24,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
   imports: [BrowserModule, IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    EmailComposer
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
@@ -33,7 +32,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     FotoPiePage,
-    FotoTobilloPage
+    FotoTobilloPage,
+    EmailComposer
   ],
   bootstrap: [AppComponent]
 })

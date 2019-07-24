@@ -16,6 +16,7 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from './../environments/environment';
 import { FotoPiePage } from './foto-pie/foto-pie.page';
 import { FotoTobilloPage } from './foto-tobillo/foto-tobillo.page';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { FotoTobilloPage } from './foto-tobillo/foto-tobillo.page';
   imports: [BrowserModule, IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    EmailComposer
   ],
   providers: [
     StatusBar,

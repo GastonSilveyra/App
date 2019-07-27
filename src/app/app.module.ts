@@ -14,9 +14,8 @@ import { Camera } from '@ionic-native/camera/ngx';
 import {AngularFireModule} from '@angular/fire';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from './../environments/environment';
-import { FotoPiePage } from './foto-pie/foto-pie.page';
-import { FotoTobilloPage } from './foto-tobillo/foto-tobillo.page';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Fotos } from './fotos';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,9 +30,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
-    FotoPiePage,
-    FotoTobilloPage,
-    EmailComposer
+    EmailComposer,
+    Fotos
   ],
   bootstrap: [AppComponent]
 })

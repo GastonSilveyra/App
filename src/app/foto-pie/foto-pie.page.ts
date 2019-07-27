@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Fotos } from '../fotos';
 
 @Component({
   selector: 'app-foto-pie',
@@ -8,32 +9,30 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 })
 export class FotoPiePage implements OnInit {
 
-  imagePie = 'hola';
+  imagePie: string = null;
 
-  constructor(private camera: Camera) {
+  constructor(private camera: Camera, private fotos: Fotos) {
    }
 
   ngOnInit() {
 
   }
 
-  getPicture(){
+  getPicture() {
     const options: CameraOptions = {
       destinationType: this.camera.DestinationType.DATA_URL,
       targetWidth: 1000,
       targetHeight: 1000,
       quality: 100
-    }
+    };
     this.camera.getPicture( options )
     .then(imageData => {
       this.imagePie = `data:image/jpeg;base64,${imageData}`;
+      this.fotos.setImagePie(`data:image/jpeg;base64,${imageData}`);
     })
-    .catch(error =>{
+    .catch(error => {
       console.error( error );
     });
   }
 
-  public getImagePie() {
-    return this.imagePie;
-  }
 }

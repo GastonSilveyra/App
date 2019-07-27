@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FotoPiePage } from '../foto-pie/foto-pie.page';
-import { FotoTobilloPage } from '../foto-tobillo/foto-tobillo.page';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Fotos } from '../fotos';
 
 @Component({
   selector: 'app-formulario',
@@ -13,22 +12,19 @@ export class FormularioPage implements OnInit {
   imagenPie: string;
   imagenTobillo: string;
 
-  constructor( private fotoPie: FotoPiePage, private fotoTobillo: FotoTobilloPage, private emailComposer: EmailComposer ) {
-    this.imagenPie = fotoPie.getImagePie();
-    this.imagenTobillo = fotoTobillo.getImageTobillo();
-   }
+  constructor( private fotos: Fotos, private emailComposer: EmailComposer ) { }
 
   ngOnInit() {
+    this.imagenPie = this.fotos.getImagePie();
+    this.imagenTobillo = this.fotos.getImageTobillo();
   }
 
     enviarMail() {
 
-    let email = {
+    const email = {
       to: 'gaston.leandro.silveyra@gmail.com',
       cc: 'gaston.leandro.silveyra@gmail.com',
-      attachments: [
-      'file: /img/neutro.jpg',
-      ],
+      attachments: [],
       subject: 'Cordova Icons',
       body: 'How are you? Nice greetings from Leipzig',
       isHtml: true

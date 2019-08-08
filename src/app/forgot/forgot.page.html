@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>forgot</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary" mode="ios">
+        <ion-title>Login</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-img [src]="image"></ion-img>
+    <ion-card>
+        <ion-text>
+            <h2 no-margin margin-vertical text-center>Olvidaste tu contraseña?</h2>
+        </ion-text>
+        <ion-row>
+            <ion-col>
+                <ion-input clearInput type="email" placeholder="Email" [(ngModel)]="email" class="input" padding-horizontal clear-input="true"></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" (click)="recover()" [disabled]="!email">
+                    <strong class="white">
+                    Recuperar contraseña</strong></ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-text text-center class="block">Ya tenes cuenta?
+            <b class="bold" routerLink="/home">Ingresa aca</b></ion-text>
+    </ion-card>
 </ion-content>

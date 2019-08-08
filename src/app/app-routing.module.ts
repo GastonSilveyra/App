@@ -11,8 +11,9 @@ const routes: Routes = [
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule'}, // canActivate:[AuthGuard] },
   { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule'},
   { path: 'foto-pie', loadChildren: './foto-pie/foto-pie.module#FotoPiePageModule' }, // canActivate:[AuthGuard] },
-  { path: 'foto-tobillo', loadChildren: './foto-tobillo/foto-tobillo.module#FotoTobilloPageModule' },   { path: 'forgot', loadChildren: './forgot/forgot.module#ForgotPageModule' },
-// canActivate:[AuthGuard] },
+  { path: 'foto-tobillo', loadChildren: './foto-tobillo/foto-tobillo.module#FotoTobilloPageModule' }, // canActivate:[AuthGuard] },
+  { path: 'forgot', loadChildren: './forgot/forgot.module#ForgotPageModule' }, // canActivate:[AuthGuard] },
+
 
 ];
 

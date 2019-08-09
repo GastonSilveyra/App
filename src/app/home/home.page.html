@@ -1,43 +1,24 @@
-<ion-header>
-    <ion-toolbar color="primary" mode="ios">
-        <ion-title>Login</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <ion-img [src]="image"></ion-img>
-    <ion-card>
-        <ion-item>
-            <ion-label position="floating">
-                Email
-            </ion-label>
-            <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating">
-                Contraseña
-            </ion-label>
-            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-        </ion-item>
-        <p>
-            Olvidaste tus datos de inicio de sesión?
-            <b routerLink="/forgot">
-                Obtene ayuda.
-            </b>
-        </p>
-        <ion-row>
-            <ion-col offset-4>
-                <ion-button expand="block" fill="outline" (click)="onLogin()" [disabled]="!(user.email && user.password)">
-                    Login
-                </ion-button>
-            </ion-col>
-
-            <ion-col>
-                <ion-button expand="block" fill="outline" routerLink="/register">
-                    Registrarse
-                </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-card>
+    <img [src]="image" class="img-fluid" alt="Responsive image">
+    <div class="card text-center" style="width: 18rem;">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <input [(ngModel)]="user.email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+            </form>
+            <form>
+                <div class="form-group">
+                    <input [(ngModel)]="user.password" type="password" name="password" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
+                </div>
+            </form>
+            <p>Olvidaste tus datos de inicio de sesión?
+                <b routerLink="/forgot">
+                                Obtene ayuda.
+                            </b>
+            </p>
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onLogin()" [disabled]="!(user.email && user.password)">Login</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/register">Registrarse</button>
+        </div>
+    </div>
 </ion-content>

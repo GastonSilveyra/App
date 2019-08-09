@@ -1,28 +1,26 @@
 <ion-header>
-    <ion-toolbar color="primary" mode="ios">
-        <ion-title>Login</ion-title>
+    <ion-toolbar color="primary">
+        <ion-title>Recuperar contraseña</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-img [src]="image"></ion-img>
-    <ion-card>
-        <ion-text>
-            <h2 no-margin margin-vertical text-center>Olvidaste tu contraseña?</h2>
-        </ion-text>
-        <ion-row>
-            <ion-col>
-                <ion-input clearInput type="email" placeholder="Email" [(ngModel)]="email" class="input" padding-horizontal clear-input="true"></ion-input>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <ion-button expand="block" (click)="recover()" [disabled]="!email">
-                    <strong class="white">
-                    Recuperar contraseña</strong></ion-button>
-            </ion-col>
-        </ion-row>
-        <ion-text text-center class="block">Ya tenes cuenta?
-            <b class="bold" routerLink="/home">Ingresa aca</b></ion-text>
-    </ion-card>
+    <div class="row mt-3">
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Olvidaste tu contraseña?</h4>
+                <form>
+                    <div class="form-group mt-4">
+                        <input [(ngModel)]="email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+                </form>
+
+                <button type="button" class="btn btn-primary btn-lg btn-block" (click)="recover()" [disabled]="!email">Recuperar</button>
+
+                <p class="font-weight-normal mt-2">Ya tenes cuenta?
+                    <b class="bold" routerLink="/home">Ingresa aca</b></p>
+            </div>
+        </div>
+    </div>
+
 </ion-content>

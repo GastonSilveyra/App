@@ -1,29 +1,24 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Register</ion-title>
+        <ion-title>Registro</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-item>
-        <ion-label>
-            Email
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>
-            Contraseña
-        </ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-    </ion-item>
-
-    <ion-item-divider>
-        <ion-button size="large" (click)="onRegister()">Register</ion-button>
-        <ion-button size="large" href="/login">Login</ion-button>
-    </ion-item-divider>
-</ion-content>
-<ion-toolbar>
-    <ion-text text-center class="block">Ya tengo una cuenta <span class="bold" routerLink="/home">Login here</span></ion-text>
-</ion-toolbar>
+    <div class="card text-center">
+        <div class="card-body">
+            <h4 class="card-title">Regístrate</h4>
+            <form>
+                <div class="form-group mt-4">
+                    <input [(ngModel)]="user.email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+            </form>
+            <form>
+                <div class="form-group">
+                    <input [(ngModel)]="user.password" type="password" name="password" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
+                </div>
+            </form>
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onRegister()">Registrarte</button>
+            <p class="font-weight-normal mt-3">Ya tengo una cuenta <span class="font-weight-bold" routerLink="/home">Ingresa acá</span></p>
+        </div>
+    </div>

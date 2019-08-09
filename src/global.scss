@@ -1,4 +1,10 @@
 // http://ionicframework.com/docs/theming/
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    /* Added */
+}
+
 @import '~@ionic/angular/css/core.css';
 @import '~@ionic/angular/css/normalize.css';
 @import '~@ionic/angular/css/structure.css';

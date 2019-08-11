@@ -34,6 +34,7 @@ async onRegister() {
   }
   async presentToast(message: string) {
     const toast = await this.toastController.create({
+      color: 'dark',
       message,
       duration: 2000
     });

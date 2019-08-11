@@ -1,49 +1,48 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tiposPie</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title>Tipos de pie</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-grid class="grid-center">
-    
-    <ion-slides pager="true">
-  
-      <ion-slide *ngFor="let slide of slides">
-    
-        <div class="slide-img-padding">
-          
-          <img [src]="slide.img">
-    
-        </div>
-    
-        <div>
-    
-          <h3 [innerHTML]="slide.titulo"></h3>
-    
-        </div>
-    
-      </ion-slide>
-  
-    </ion-slides>
-  
-    <ion-row>
-  
-        <ion-col>
-          <ion-button expand="full" routerLink="/foto-pie" shape="round" mode="ios">
-            Atras
-          </ion-button>
-        </ion-col>
-      
-        <ion-col>
-          <ion-button expand="full" routerLink="/foto-tobillo" shape="round" mode="ios">
-            Siguiente
-          </ion-button>
-        </ion-col>
-      
-      </ion-row>
+    <ion-grid class="grid-center">
+        <ion-slides pager="true">
+            <ion-slide *ngFor="let slide of slides">
+                <div class="slide-img-padding">
+                    <img [src]="slide.img">
+                </div>
+                <div>
+                    <h3 [innerHTML]="slide.titulo"></h3>
+                </div>
+            </ion-slide>
+        </ion-slides>
+        <!-- <ion-row>
 
-  </ion-grid>
+            <ion-col>
+                <ion-button expand="full" routerLink="/foto-pie" shape="round" mode="ios">
+                    Atras
+                </ion-button>
+            </ion-col>
 
+            <ion-col>
+                <ion-button expand="full" routerLink="/foto-tobillo" shape="round" mode="ios">
+                    Siguiente
+                </ion-button>
+            </ion-col>
+
+        </ion-row> -->
+    </ion-grid>
 </ion-content>
+<ion-footer>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/foto-tobillo">
+            <ion-icon name="arrow-forward"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button routerLink="/foto-pie">
+            <ion-icon name="arrow-back"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-footer>

@@ -22,7 +22,7 @@ export class ForgotPage implements OnInit {
     this.fireauth.auth.sendPasswordResetEmail(this.email)
       .then(data => {
         console.log(data);
-        this.presentToast('Password reset email sent', 'bottom', 1000);
+        this.presentToast('Password reset email sent', 'bottom', 2000);
         this.router.navigateByUrl('/login');
       })
       .catch(err => {
@@ -32,6 +32,7 @@ export class ForgotPage implements OnInit {
   }
   async presentToast(message, position, duration) {
     const toast = await this.toastController.create({
+      color: 'dark',
       message,
       position,
       duration

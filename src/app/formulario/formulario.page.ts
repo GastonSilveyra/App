@@ -32,6 +32,8 @@ export class FormularioPage implements OnInit {
 
     enviarMail() {
 
+    this.crearPDF();
+
     const email = {
       to: 'gaston.leandro.silveyra@gmail.com',
       cc: 'gaston.leandro.silveyra@gmail.com',
@@ -87,6 +89,7 @@ export class FormularioPage implements OnInit {
     const pdfGenerator = pdfMake.createPdf(docDefinition);
     pdfGenerator.getBase64((data) => {
     this.pdfObj = data;
+    console.log('el pdf se creo');
   });
   }
 

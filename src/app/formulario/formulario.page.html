@@ -10,22 +10,22 @@
             <ion-item>
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-label stacked>Nombres:</ion-label>
-                <ion-input type="text" placeholder="Nombre"></ion-input>
+                <ion-input [(ngModel)]="nombre" name="nombre" type="text" placeholder="Nombre"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-label stacked>Apellidos:</ion-label>
-                <ion-input type="text" placeholder="Apellidos"></ion-input>
+                <ion-input type="text" placeholder="Apellidos" [(ngModel)]="apellido" name="apellido"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-icon name="mail" item-start></ion-icon>
                 <ion-label stacked>Correo electronico:</ion-label>
-                <ion-input type="email" placeholder="Email"></ion-input>
+                <ion-input type="email" placeholder="Email" [(ngModel)]="email" name="email"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-icon name="calendar" item-start></ion-icon>
                 <ion-label stacked>Fecha de nacimiento:</ion-label>
-                <ion-datetime displayFormat="MM-DD-YYYY" placeholder="MM-DD-YYY"></ion-datetime>
+                <ion-datetime displayFormat="MM-DD-YYYY" placeholder="MM-DD-YYY" [(ngModel)]="fechaNac" name="fechaNac"></ion-datetime>
             </ion-item>
 
             <ion-row>
@@ -46,7 +46,7 @@
             </ion-row>
         </ion-list>
         <div padding>
-            <ion-button ion-button full (click)="enviarMail()">Enviar mail</ion-button>
+            <ion-button full (click)="enviarMail()">Enviar mail</ion-button>
         </div>
     </form>
 </ion-content>

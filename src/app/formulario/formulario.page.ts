@@ -15,6 +15,10 @@ export class FormularioPage implements OnInit {
 
   imagenPie: string;
   imagenTobillo: string;
+  nombre: string;
+  apellido: string;
+  email: string;
+  fechaNac: string;
 
   letterObj = {
     to: '',
@@ -22,6 +26,7 @@ export class FormularioPage implements OnInit {
     text: ''
   };
   pdfObj = null;
+  pdfGenerator = null;
 
   constructor( private fotos: Fotos, private emailComposer: EmailComposer ) { }
 
@@ -31,43 +36,32 @@ export class FormularioPage implements OnInit {
   }
 
     enviarMail() {
-
-    this.crearPDF();
+    this.createPdf();
 
     const email = {
-      to: 'gaston.leandro.silveyra@gmail.com',
-      cc: 'gaston.leandro.silveyra@gmail.com',
-      attachments: [],
-      subject: 'Cordova Icons',
-      body: 'How are you? Nice greetings from Leipzig',
+      to: this.email,
+      attachments: [
+        `base64:Resumen.pdf//${this.pdfObj}`,
+      ],
+      subject: 'Footsite',
       isHtml: true
     };
     this.emailComposer.open(email);
   }
 
-  crearPDF() {
+  createPdf() {
     const docDefinition = {
       content: [
-        { text: 'REMINDER', style: 'header' },
-        { text: new Date().toTimeString(), alignment: 'right' },
-        { text: new Date().toLocaleTimeString() },
+        { text: new Date().toLocaleTimeString(), alignment: 'left' },
 
-        { text: 'From', style: 'subheader' },
-        { text: this.letterObj.from },
+        { text: this.nombre },
+        { text: this.apellido },
+        { text: this.fechaNac },
 
-        { text: 'To', style: 'subheader' },
-        { image: this.imagenPie },
-        { image: this.imagenTobillo },
+        { image: this.imagenPie, fit: [100, 100] },
+        { image: this.imagenTobillo, fit: [100, 100] },
 
         { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
-
-        {
-          ul: [
-            'Bacon',
-            'Rips',
-            'BBQ',
-          ]
-        }
       ],
       styles: {
         header: {
@@ -87,10 +81,16 @@ export class FormularioPage implements OnInit {
       }
     };
     const pdfGenerator = pdfMake.createPdf(docDefinition);
+    this.pdfGenerator = pdfMake.createPdf(docDefinition);
     pdfGenerator.getBase64((data) => {
     this.pdfObj = data;
-    console.log('el pdf se creo');
+    console.log('El pdf se creo correctamente');
   });
   }
+
+  descargarPDF() {
+    this.pdfGenerator.download();
+  }
+
 
 }

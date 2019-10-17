@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Fotos } from '../fotos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-foto-pie',
@@ -11,11 +12,14 @@ export class FotoPiePage implements OnInit {
 
   imagePie: string = null;
 
-  constructor(private camera: Camera, private fotos: Fotos) {
+  constructor(private camera: Camera, private fotos: Fotos, private router: Router) {
    }
 
   ngOnInit() {
 
+  }
+  navigate() {
+    this.router.navigateByUrl('/tipos-pie');
   }
 
   getPicture() {

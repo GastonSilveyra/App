@@ -1,8 +1,12 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Foto tobillo</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tipos-pie"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="text-align: center;">Foto tobillo</ion-title>
     </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
     <div>
@@ -17,11 +21,11 @@
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
         <ion-fab-list side="top">
-            <ion-fab-button>
+            <ion-fab-button (click)="navegar()">
                 <ion-icon name="arrow-forward" routerLink="/tipos-tobillo"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button>
-                <ion-icon name="camera" (click)="getPicture()"></ion-icon>
+            <ion-fab-button (click)="getPicture()">
+                <ion-icon name="camera"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>

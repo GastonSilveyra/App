@@ -15,6 +15,8 @@ export class FormularioPage implements OnInit {
 
   imagenPie: string;
   imagenTobillo: string;
+  imagePie: string;
+  imageTobillo: string;
   nombre: string;
   apellido: string;
   email: string;
@@ -33,6 +35,8 @@ export class FormularioPage implements OnInit {
   ngOnInit() {
     this.imagenPie = this.fotos.getImagePie();
     this.imagenTobillo = this.fotos.getImageTobillo();
+    this.imagePie = this.fotos.getimagenPie();
+    this.imageTobillo = this.fotos.getImageTobillo();
   }
 
     enviarMail() {
@@ -60,6 +64,8 @@ export class FormularioPage implements OnInit {
 
         { image: this.imagenPie, fit: [100, 100] },
         { image: this.imagenTobillo, fit: [100, 100] },
+        // { image: this.imagePie, fit: [100, 100] },
+        // { image: this.imageTobillo, fit: [100, 100] },
 
         { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
       ],

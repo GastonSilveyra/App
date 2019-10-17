@@ -1,19 +1,22 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Tipos de pie</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="foto-pie"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="text-align: center;">Tipos de pie</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
     <ion-grid class="grid-center">
-        <ion-slides pager="true">
-            <ion-slide *ngFor="let slide of slides">
+        <ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
+            <ion-slide *ngFor="let imagen of imagenes">
                 <div class="slide-img-padding">
-                    <img [src]="slide.img">
+                    <img [src]="imagen.img">
                 </div>
                 <div>
-                    <h3 [innerHTML]="slide.titulo"></h3>
+                    <h3 [innerHTML]="imagen.titulo"></h3>
                 </div>
             </ion-slide>
         </ion-slides>
@@ -36,13 +39,13 @@
 </ion-content>
 <ion-footer>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button routerLink="/foto-tobillo">
+        <ion-fab-button (click)="navegar()" routerLink="/foto-tobillo">
             <ion-icon name="arrow-forward"></ion-icon>
         </ion-fab-button>
     </ion-fab>
-    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
         <ion-fab-button routerLink="/foto-pie">
             <ion-icon name="arrow-back"></ion-icon>
         </ion-fab-button>
-    </ion-fab>
+    </ion-fab> -->
 </ion-footer>

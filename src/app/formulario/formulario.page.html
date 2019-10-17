@@ -1,6 +1,9 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>Formulario</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tipos-tobillo"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="text-align: center;">Formulario</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -46,7 +49,7 @@
             </ion-row>
         </ion-list>
         <div padding>
-            <ion-button full (click)="enviarMail()">Enviar mail</ion-button>
+            <ion-button full (click)="descargarPDF()">Enviar mail</ion-button>
         </div>
     </form>
 </ion-content>

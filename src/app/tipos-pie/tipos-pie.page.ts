@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Fotos } from '../fotos';
 
 @Component({
   selector: 'app-tipos-pie',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tipos-pie.page.scss'],
 })
 export class TiposPiePage implements OnInit {
+  @ViewChild(IonSlides) slides: IonSlides;
+  currentIndex = 0;
 
-  slides = [
+  imagenes = [
     {
       img: 'assets/img/plano-primer-grado.jpg',
       titulo: 'Pie Plano<br>Primer Grado<br>o Pie Debil.'
@@ -35,9 +40,19 @@ export class TiposPiePage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private router: Router, private foto: Fotos) { }
 
   ngOnInit() {
+  }
+  navegar() {
+    this.foto.setimagenPie(this.imagenes[this.currentIndex].img);
+    this.router.navigateByUrl('foto-tobillo');
+  }
+  slideChanged() {
+    this.slides.getActiveIndex().then(data => {
+      console.log(data);
+      this.currentIndex = data;
+    });
   }
 
 }

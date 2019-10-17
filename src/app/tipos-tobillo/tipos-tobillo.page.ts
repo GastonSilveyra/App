@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Fotos } from '../fotos';
 
 @Component({
   selector: 'app-tipos-tobillo',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tipos-tobillo.page.scss'],
 })
 export class TiposTobilloPage implements OnInit {
+  @ViewChild(IonSlides) slides: IonSlides;
+  currentIndex = 0;
 
-  slides = [
+  images = [
     {
       img: 'assets/img/neutro.jpg',
       titulo: 'Neutro.'
@@ -22,9 +27,20 @@ export class TiposTobilloPage implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private router: Router, private foto: Fotos) { }
 
   ngOnInit() {
+  }
+  navigate() {
+    this.foto.setimagenTobillo(this.images[this.currentIndex].img);
+    this.router.navigateByUrl('formulario');
+
+  }
+  slideChanged() {
+    this.slides.getActiveIndex().then(data => {
+      console.log(data);
+      this.currentIndex = data;
+    });
   }
 
 }

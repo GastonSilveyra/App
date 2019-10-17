@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Fotos } from '../fotos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-foto-tobillo',
@@ -11,10 +12,14 @@ export class FotoTobilloPage implements OnInit {
 
   imageTobillo: string = null;
 
-  constructor(private camera: Camera, private fotos: Fotos) {
+  constructor(private camera: Camera, private fotos: Fotos, private router: Router) {
    }
 
   ngOnInit() {
+
+  }
+  navegar() {
+    this.router.navigateByUrl('tipos-tobillo');
 
   }
 

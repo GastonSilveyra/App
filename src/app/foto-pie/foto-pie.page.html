@@ -16,11 +16,11 @@
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
         <ion-fab-list side="top">
-            <ion-fab-button>
-                <ion-icon name="arrow-forward" routerLink="/tipos-pie"></ion-icon>
+            <ion-fab-button (click)="navigate()">
+                <ion-icon name="arrow-forward"></ion-icon>
             </ion-fab-button>
-            <ion-fab-button>
-                <ion-icon name="camera" (click)="getPicture()"></ion-icon>
+            <ion-fab-button (click)="getPicture()">
+                <ion-icon name="camera"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>

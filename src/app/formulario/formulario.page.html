@@ -7,42 +7,76 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
     <form>
-        <ion-list>
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
             <ion-item>
-                <ion-icon name="person" item-start></ion-icon>
-                <ion-label stacked>Nombres:</ion-label>
+                <ion-label position="stacked"><i class="fas fa-user"></i> Nombres:</ion-label>
                 <ion-input [(ngModel)]="nombre" name="nombre" type="text" placeholder="Nombre"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-icon name="person" item-start></ion-icon>
-                <ion-label stacked>Apellidos:</ion-label>
+                <ion-label position="stacked"><i class="fas fa-user"></i> Apellidos:</ion-label>
                 <ion-input type="text" placeholder="Apellidos" [(ngModel)]="apellido" name="apellido"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-icon name="mail" item-start></ion-icon>
-                <ion-label stacked>Correo electronico:</ion-label>
+                <ion-label position="stacked"><i class="fas fa-envelope"></i> Correo electronico:</ion-label>
                 <ion-input type="email" placeholder="Email" [(ngModel)]="email" name="email"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-icon name="calendar" item-start></ion-icon>
-                <ion-label stacked>Fecha de nacimiento:</ion-label>
+                <ion-label position="stacked"><i class="fas fa-phone"></i> Teléfono:</ion-label>
+                <ion-input type="tel" placeholder="Teléfono" [(ngModel)]="telefono" name="telefono"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked"><i class="far fa-calendar-alt"></i> Fecha de nacimiento:</ion-label>
                 <ion-datetime displayFormat="MM-DD-YYYY" placeholder="MM-DD-YYY" [(ngModel)]="fechaNac" name="fechaNac"></ion-datetime>
             </ion-item>
+            <ion-item>
+                <ion-label><i class="fas fa-shoe-prints"></i> Talle</ion-label>
+                <ion-select placeholder="Seleccione un talle" (ionChange)="talleSeleccionado($event)">
+                    <ion-select-option *ngFor="let talle of talles " [value]="talle">{{talle}}</ion-select-option>
+                </ion-select>
+                <ion-item>
+                    <i class="fas fa-shoe-prints"></i></i> Tipo Calzado:</ion-label>
+                    <ion-input type="text" placeholder="Tipo calzado" [(ngModel)]="tipoCalzado" name="tipoCalzado"></ion-input>
+                </ion-item>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked"><i class="fas fa-balance-scale"></i> Peso:</ion-label>
+                <ion-input type="number" placeholder="Person" [(ngModel)]="peso" name="peso"></ion-input>
+            </ion-item>
+            <ion-item>
 
+                <ion-label position="stacked"><i class="fas fa-ruler"></i> Altura:</ion-label>
+                <ion-input type="number" placeholder="Altura" [(ngModel)]="altura" name="altura"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked"><i class="far fa-clipboard"></i> Prescripción:</ion-label>
+                <ion-textarea type="string" placeholder="Prescripcion" [(ngModel)]="prescripcion" name="prescripcion"></ion-textarea>
+                <!-- <ion-input type="string" placeholder="prescripcion" [(ngModel)]="prescripcion" name="prescripcion"></ion-input> -->
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked"><i class="far fa-clipboard"></i> Patología:</ion-label>
+                <ion-textarea type="string" placeholder="Patología" [(ngModel)]="patologia" name="patologia"></ion-textarea>
+                <!-- <ion-input type="string" placeholder="prescripcion" [(ngModel)]="prescripcion" name="prescripcion"></ion-input> -->
+            </ion-item>
+            <ion-item>
+
+                <ion-label position="stacked"><i class="fas fa-info"></i> Informe final:</ion-label>
+                <ion-textarea type="string" placeholder="Informe final" [(ngModel)]="informeFinal" name="informeFinal"></ion-textarea>
+                <!-- <ion-input type="string" placeholder="prescripcion" [(ngModel)]="prescripcion" name="prescripcion"></ion-input> -->
+            </ion-item>
             <ion-row>
                 <ion-col>
                     <ion-item>
-                        <ion-icon name="woman" item-start></ion-icon>
-                        <ion-label>Mujer</ion-label>
+                        <ion-label>
+                            <ion-icon name="woman" item-start></ion-icon> Mujer</ion-label>
                         <ion-radio value="2"></ion-radio>
                     </ion-item>
                 </ion-col>
                 <ion-col>
                     <ion-item>
-                        <ion-icon name="man" item-start></ion-icon>
-                        <ion-label>Hombre</ion-label>
+                        <ion-label>
+                            <ion-icon name="man" item-start></ion-icon> Hombre</ion-label>
                         <ion-radio value="1"></ion-radio>
                     </ion-item>
                 </ion-col>

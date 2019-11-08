@@ -5,6 +5,7 @@ import { Base64 } from '@ionic-native/base64/ngx';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { range } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -29,15 +30,16 @@ export class FormularioPage implements OnInit {
   apellido: string;
   email: string;
   fechaNac: string;
-  telefono: number;
+  talles = [];
+  a = 22;
+  talle: number;
   peso: number;
-  tipoCalzado: string;
-  numeroCalzado: string;
   altura: number;
-  i: number;
-
-
-  arrayNumeroCalzado = [];
+  telefono: number;
+  prescripcion: string;
+  patologia: string;
+  informeFinal: string;
+  tipoCalzado: string;
 
   letterObj = {
     to: '',
@@ -47,7 +49,12 @@ export class FormularioPage implements OnInit {
   pdfObj = null;
   pdfGenerator = null;
 
-  constructor( private fotos: Fotos, private emailComposer: EmailComposer, private base64: Base64 ) { }
+  constructor( private fotos: Fotos, private emailComposer: EmailComposer, private base64: Base64 ) {
+    for (let index = 0; index < 24; index++) {
+      this.talles[index] = this.a;
+      this.a++;
+    }
+  }
 
   ngOnInit() {
     // this.imagenPie = this.fotos.getImagePie();
@@ -64,7 +71,10 @@ export class FormularioPage implements OnInit {
 
     this.imagePie = this.fotos.getimagenPie();
     this.imageTobillo = this.fotos.getImageTobillo();
-    this.crearNumeroCalzado();
+  }
+  talleSeleccionado(talle: Event) {
+    this.talle = talle[`detail`].value;
+    // console.log('this.talle :', this.talle);
   }
 
     enviarMail() {
@@ -91,7 +101,6 @@ export class FormularioPage implements OnInit {
         { text: this.apellido },
         { text: this.telefono },
         { text: this.tipoCalzado },
-        { text: this.numeroCalzado },
         { text: this.peso },
         { text: this.altura },
 
@@ -131,15 +140,6 @@ export class FormularioPage implements OnInit {
     this.pdfGenerator.download();
   }
 
-  crearNumeroCalzado() {
-    for (let i = 25; i < 48; i++) {
-      this.arrayNumeroCalzado.push(i);
-    }
-  }
-
-  calzado() {
-    console.log(this.numeroCalzado);
-  }
 
   convertirBase64() {
     this.base64.encodeFile(this.imagePie).then((base64File: string) => {

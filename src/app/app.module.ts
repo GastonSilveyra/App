@@ -16,6 +16,7 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from './../environments/environment';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { Fotos } from './fotos';
+import { Base64 } from '@ionic-native/base64/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +32,8 @@ import { Fotos } from './fotos';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     EmailComposer,
-    Fotos
+    Fotos,
+    Base64
   ],
   bootstrap: [AppComponent]
 })

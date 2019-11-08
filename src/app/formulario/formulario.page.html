@@ -35,10 +35,10 @@
                 <ion-select placeholder="Seleccione un talle" (ionChange)="talleSeleccionado($event)">
                     <ion-select-option *ngFor="let talle of talles " [value]="talle">{{talle}}</ion-select-option>
                 </ion-select>
-                <ion-item>
-                    <i class="fas fa-shoe-prints"></i></i> Tipo Calzado:</ion-label>
-                    <ion-input type="text" placeholder="Tipo calzado" [(ngModel)]="tipoCalzado" name="tipoCalzado"></ion-input>
-                </ion-item>
+            </ion-item>
+            <ion-item>
+                <ion-label><i class="fas fa-shoe-prints"></i> Tipo Calzado:</ion-label>
+                <ion-input type="text" placeholder="Tipo calzado" [(ngModel)]="tipoCalzado" name="tipoCalzado"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label position="stacked"><i class="fas fa-balance-scale"></i> Peso:</ion-label>
@@ -65,7 +65,7 @@
                 <ion-textarea type="string" placeholder="Informe final" [(ngModel)]="informeFinal" name="informeFinal"></ion-textarea>
                 <!-- <ion-input type="string" placeholder="prescripcion" [(ngModel)]="prescripcion" name="prescripcion"></ion-input> -->
             </ion-item>
-            <ion-row>
+            <!-- <ion-row>
                 <ion-col>
                     <ion-item>
                         <ion-label>
@@ -80,7 +80,7 @@
                         <ion-radio value="1"></ion-radio>
                     </ion-item>
                 </ion-col>
-            </ion-row>
+            </ion-row> -->
         </ion-list>
         <div padding>
             <ion-button full (click)="descargarPDF()">Enviar mail</ion-button>

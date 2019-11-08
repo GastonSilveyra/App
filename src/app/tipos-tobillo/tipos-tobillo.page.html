@@ -9,27 +9,32 @@
 
 <ion-content id="main">
 
-    <ion-grid class="grid-center">
+    <ion-row>
+        <ion-col size="12">
+            <ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
 
-        <ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
+                <ion-slide *ngFor="let image of images">
 
-            <ion-slide *ngFor="let image of images">
+                    <div class="slide-img-padding">
 
-                <div class="slide-img-padding">
+                        <img class="img" [src]="image.img">
 
-                    <img [src]="image.img">
+                    </div>
 
-                </div>
+                    <div>
 
-                <div>
+                        <h3 [innerHTML]="image.titulo"></h3>
 
-                    <h3 [innerHTML]="image.titulo"></h3>
+                    </div>
 
-                </div>
+                </ion-slide>
 
-            </ion-slide>
+            </ion-slides>
+        </ion-col>
+    </ion-row>
 
-        </ion-slides>
+    <ion-grid>
+
 
         <!-- <ion-row>
 

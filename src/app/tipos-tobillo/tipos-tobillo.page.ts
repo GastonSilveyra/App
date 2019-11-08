@@ -14,15 +14,15 @@ export class TiposTobilloPage implements OnInit {
 
   images = [
     {
-      img: 'assets/img/neutro.jpg',
+      img: 'assets/pie/normal.png',
       titulo: 'Neutro.'
     },
     {
-      img: 'assets/img/pronacion.jpg',
+      img: 'assets/pie/pronador.png',
       titulo: 'Pronación.'
     },
     {
-      img: 'assets/img/supinacion.jpg',
+      img: 'assets/pie/supinador.png',
       titulo: 'Supinación.'
     }
   ];

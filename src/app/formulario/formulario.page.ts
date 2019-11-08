@@ -4,6 +4,7 @@ import { Fotos } from '../fotos';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { range } from 'rxjs';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -21,6 +22,15 @@ export class FormularioPage implements OnInit {
   apellido: string;
   email: string;
   fechaNac: string;
+  talles = [];
+  a = 22;
+  talle: number;
+  peso: number;
+  altura: number;
+  telefono: number;
+  prescripcion: string;
+  patologia: string;
+  informeFinal: string;
 
   letterObj = {
     to: '',
@@ -30,13 +40,22 @@ export class FormularioPage implements OnInit {
   pdfObj = null;
   pdfGenerator = null;
 
-  constructor( private fotos: Fotos, private emailComposer: EmailComposer ) { }
+  constructor( private fotos: Fotos, private emailComposer: EmailComposer ) {
+    for (let index = 0; index < 24; index++) {
+      this.talles[index] = this.a;
+      this.a++;
+    }
+  }
 
   ngOnInit() {
     this.imagenPie = this.fotos.getImagePie();
     this.imagenTobillo = this.fotos.getImageTobillo();
     this.imagePie = this.fotos.getimagenPie();
     this.imageTobillo = this.fotos.getImageTobillo();
+  }
+  talleSeleccionado(talle: Event) {
+    this.talle = talle[`detail`].value;
+    // console.log('this.talle :', this.talle);
   }
 
     enviarMail() {

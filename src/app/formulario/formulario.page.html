@@ -35,6 +35,10 @@
                 <ion-select placeholder="Seleccione un talle" (ionChange)="talleSeleccionado($event)">
                     <ion-select-option *ngFor="let talle of talles " [value]="talle">{{talle}}</ion-select-option>
                 </ion-select>
+                <ion-item>
+                    <i class="fas fa-shoe-prints"></i></i> Tipo Calzado:</ion-label>
+                    <ion-input type="text" placeholder="Tipo calzado" [(ngModel)]="tipoCalzado" name="tipoCalzado"></ion-input>
+                </ion-item>
             </ion-item>
             <ion-item>
                 <ion-label position="stacked"><i class="fas fa-balance-scale"></i> Peso:</ion-label>

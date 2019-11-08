@@ -31,6 +31,7 @@ export class FormularioPage implements OnInit {
   prescripcion: string;
   patologia: string;
   informeFinal: string;
+  tipoCalzado: string;
 
   letterObj = {
     to: '',

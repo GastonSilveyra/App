@@ -78,7 +78,9 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-camera": {},
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -87,7 +89,9 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-email-composer": {},
+      "cordova-plugin-email-composer": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
       "com-badrit-base64": {}
     },
     "platforms": [

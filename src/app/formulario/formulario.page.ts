@@ -79,7 +79,6 @@ export class FormularioPage implements OnInit {
 
     enviarMail() {
     // this.createPdf();
-    this.convertirBase64();
 
     const email = {
       to: this.email,
@@ -139,6 +138,7 @@ export class FormularioPage implements OnInit {
     this.pdfObj = data;
     console.log('El pdf se creo correctamente');
   });
+    this.enviarMail();
   }
 
   descargarPDF() {

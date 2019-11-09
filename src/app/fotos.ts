@@ -1,40 +1,40 @@
 export class Fotos {
 
-  // foto camara
-  private imagePie: string;
-  private imageTobillo: string;
 
-  // fotos seleccionadas
-  private imagenTobillo: string;
-  private imagenPie: string;
+  private imagenPieCamara: string;
+  private imagenTobilloCamara: string;
 
-  public getImageTobillo() {
-    return this.imageTobillo;
+
+  private imagenTobilloSelec: string;
+  private imagenPieSelec: string;
+
+  public getImagenTobilloCamara() {
+    return this.imagenTobilloCamara;
   }
-  // foto camara pie
-  public getImagePie() {
-    return this.imagePie;
+
+  public getImagenPieCamara() {
+    return this.imagenPieCamara;
   }
-  // foto camara tobillo
-  public getimagenTobillo() {
-    return this.imagenTobillo;
+
+  public getImagenTobilloSelec() {
+    return this.imagenTobilloSelec;
   }
-  public getimagenPie() {
-    return this.imagenPie;
+  public getImagenPieSelec() {
+    return this.imagenPieSelec;
   }
-  // foto camara tobillo
-  public setImageTobillo(imagen: string) {
-    this.imageTobillo = imagen;
+
+  public setImagenTobilloCamara(imagen: string) {
+    this.imagenTobilloCamara = imagen;
   }
-  // foto camara pie
-  public setImagePie(imagen: string) {
-    this.imagePie = imagen;
+
+  public setImagenPieCamara(imagen: string) {
+    this.imagenPieCamara = imagen;
   }
-  public setimagenTobillo(index: string) {
-    this.imagenTobillo = index;
+  public setimagenTobilloSelec(index: string) {
+    this.imagenTobilloSelec = index;
   }
-  public setimagenPie(index: string) {
-    this.imagenPie = index;
+  public setimagenPieSelec(index: string) {
+    this.imagenPieSelec = index;
 
   }
 }

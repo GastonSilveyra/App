@@ -32,7 +32,7 @@ export class FotoPiePage implements OnInit {
     this.camera.getPicture( options )
     .then(imageData => {
       this.imagePie = `data:image/jpeg;base64,${imageData}`;
-      this.fotos.setImagePie(`data:image/jpeg;base64,${imageData}`);
+      this.fotos.setImagenPieCamara(`data:image/jpeg;base64,${imageData}`);
     })
     .catch(error => {
       console.error( error );

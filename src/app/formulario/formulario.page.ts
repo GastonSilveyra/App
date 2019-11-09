@@ -15,15 +15,13 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class FormularioPage implements OnInit {
 
-  // fotos de camara
-  imagenPie: string;
-  imagenTobillo: string;
 
-  // fotos seleccionadas
-  imagePie: string;
-  imageTobillo: string;
-  imagePieB64: string;
-  imageTobilloB64: string;
+  imagenPieCamara: string;
+  imagenTobilloCamara: string;
+
+
+  imagenPieSelec: string;
+  imagenTobilloSelec: string;
 
 
   nombre: string;
@@ -66,11 +64,11 @@ export class FormularioPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.imagenPie = this.fotos.getImagePie();
-    this.imagenTobillo = this.fotos.getImageTobillo();
+    this.imagenPieCamara = this.fotos.getImagenPieCamara();
+    this.imagenTobilloCamara = this.fotos.getImagenTobilloCamara();
 
-    this.imagePie = this.fotos.getimagenPie();
-    this.imageTobillo = this.fotos.getImageTobillo();
+    this.imagenPieSelec = this.fotos.getImagenPieSelec();
+    this.imagenTobilloSelec = this.fotos.getImagenTobilloSelec();
   }
   talleSeleccionado(talle: Event) {
     this.talle = talle[`detail`].value;
@@ -78,7 +76,7 @@ export class FormularioPage implements OnInit {
   }
 
     enviarMail() {
-    // this.createPdf();
+    this.createPdf();
 
     const email = {
       to: this.email,
@@ -95,25 +93,39 @@ export class FormularioPage implements OnInit {
     const docDefinition = {
       content: [
         { text: new Date().toLocaleTimeString(), alignment: 'left' },
-
-        { text: this.nombre },
-        { text: this.apellido },
-        { text: this.telefono },
-        { text: this.fechaNac },
-        { text: this.tipoCalzado },
-        { text: this.talle },
-        { text: this.peso },
-        { text: this.altura },
-        { text: this.prescripcion },
-        { text: this.patologia },
-        { text: this.informeFinal },
-
-        { image: this.imagenPie, fit: [100, 100] },
-        { image: this.imagenTobillo, fit: [100, 100] },
-        { image: this.imagePieB64, fit: [100, 100] },
-        { image: this.imageTobilloB64, fit: [100, 100] },
-
-        { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
+        'Datos de la persona:',
+        {
+          // to treat a paragraph as a bulleted list, set an array of items under the ul key
+          ul: [
+            { text: this.nombre },
+            { text: this.apellido },
+            { text: this.telefono },
+            { text: this.fechaNac },
+            { text: this.tipoCalzado },
+            { text: this.talle },
+            { text: this.peso },
+            { text: this.altura },
+            { text: this.prescripcion },
+            { text: this.patologia },
+            { text: this.informeFinal },
+          ]
+        },
+        {
+          image: this.imagenPieSelec,
+          fit: [300, 300],
+        },
+        {
+          image: this.imagenPieCamara,
+          fit: [300, 300],
+        },
+        {
+          image: this.imagenTobilloSelec,
+          fit: [300, 300],
+        },
+        {
+          image: this.imagenTobilloCamara,
+          fit: [300, 300],
+        },
       ],
       styles: {
         header: {
@@ -138,7 +150,7 @@ export class FormularioPage implements OnInit {
     this.pdfObj = data;
     console.log('El pdf se creo correctamente');
   });
-    this.enviarMail();
+    // this.enviarMail();
   }
 
   descargarPDF() {
@@ -146,20 +158,20 @@ export class FormularioPage implements OnInit {
   }
 
 
-  convertirBase64() {
-    this.base64.encodeFile(this.imagePie).then((base64File: string) => {
-      console.log(base64File);
-      this.imagePieB64 = base64File;
-    }, (err) => {
-      console.log(err);
-    });
-    this.base64.encodeFile(this.imageTobillo).then((base64File: string) => {
-      console.log(base64File);
-      this.imageTobilloB64 = base64File;
-    }, (err) => {
-      console.log(err);
-    });
-    this.createPdf();
-  }
+  // convertirBase64() {
+  //   this.base64.encodeFile(this.imagePie).then((base64File: string) => {
+  //     console.log(base64File);
+  //     this.imagePieB64 = base64File;
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  //   this.base64.encodeFile(this.imageTobillo).then((base64File: string) => {
+  //     console.log(base64File);
+  //     this.imageTobilloB64 = base64File;
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  //   this.createPdf();
+  // }
 
 }

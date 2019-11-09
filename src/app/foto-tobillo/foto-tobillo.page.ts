@@ -33,7 +33,7 @@ export class FotoTobilloPage implements OnInit {
     this.camera.getPicture( options )
     .then(imageData => {
       this.imageTobillo = `data:image/jpeg;base64,${imageData}`;
-      this.fotos.setImageTobillo(`data:image/jpeg;base64,${imageData}`);
+      this.fotos.setImagenTobilloCamara(`data:image/jpeg;base64,${imageData}`);
     })
     .catch(error => {
       console.error( error );

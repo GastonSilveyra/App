@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { Fotos } from '../fotos';
-import { Base64 } from '@ionic-native/base64/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -47,7 +47,7 @@ export class FormularioPage implements OnInit {
   pdfObj = null;
   pdfGenerator = null;
 
-  constructor( private fotos: Fotos, private emailComposer: EmailComposer, private base64: Base64 ) {
+  constructor( private fotos: Fotos, private emailComposer: EmailComposer, private socialSharing: SocialSharing ) {
     for (let index = 0; index < 24; index++) {
       this.talles[index] = this.a;
       this.a++;
@@ -81,7 +81,8 @@ export class FormularioPage implements OnInit {
     const email = {
       to: this.email,
       attachments: [
-        `base64:Resumen.pdf//${this.pdfObj}`,
+        // `base64:Resumen.pdf//${this.pdfObj}`,
+        this.pdfObj,
       ],
       subject: 'Footsite',
       isHtml: true
@@ -92,40 +93,40 @@ export class FormularioPage implements OnInit {
   createPdf() {
     const docDefinition = {
       content: [
-        { text: new Date().toLocaleTimeString(), alignment: 'left' },
-        'Datos de la persona:',
-        {
-          // to treat a paragraph as a bulleted list, set an array of items under the ul key
-          ul: [
-            { text: this.nombre },
-            { text: this.apellido },
-            { text: this.telefono },
-            { text: this.fechaNac },
-            { text: this.tipoCalzado },
-            { text: this.talle },
-            { text: this.peso },
-            { text: this.altura },
-            { text: this.prescripcion },
-            { text: this.patologia },
-            { text: this.informeFinal },
-          ]
-        },
+        // { text: new Date().toLocaleTimeString(), alignment: 'left' },
+        // 'Datos de la persona:',
+        // {
+        //   // to treat a paragraph as a bulleted list, set an array of items under the ul key
+        //   ul: [
+        //     { text: this.nombre },
+        //     { text: this.apellido },
+        //     { text: this.telefono },
+        //     { text: this.fechaNac },
+        //     { text: this.tipoCalzado },
+        //     { text: this.talle },
+        //     { text: this.peso },
+        //     { text: this.altura },
+        //     { text: this.prescripcion },
+        //     { text: this.patologia },
+        //     { text: this.informeFinal },
+        //   ]
+        // },
         {
           image: this.imagenPieSelec,
           fit: [300, 300],
         },
-        {
-          image: this.imagenPieCamara,
-          fit: [300, 300],
-        },
-        {
-          image: this.imagenTobilloSelec,
-          fit: [300, 300],
-        },
-        {
-          image: this.imagenTobilloCamara,
-          fit: [300, 300],
-        },
+        // {
+        //   image: this.imagenPieCamara,
+        //   fit: [300, 300],
+        // },
+        // {
+        //   image: this.imagenTobilloSelec,
+        //   fit: [300, 300],
+        // },
+        // {
+        //   image: this.imagenTobilloCamara,
+        //   fit: [300, 300],
+        // },
       ],
       styles: {
         header: {
@@ -150,28 +151,43 @@ export class FormularioPage implements OnInit {
     this.pdfObj = data;
     console.log('El pdf se creo correctamente');
   });
-    // this.enviarMail();
   }
 
-  descargarPDF() {
-    this.pdfGenerator.download();
+  downloadPDF() {
+    const docDefinition = {
+      content: [
+        {
+          image: this.imagenPieSelec,
+          fit: [300, 300],
+        },
+        // {
+        //   image: this.imagenPieCamara,
+        //   fit: [300, 300],
+        // },
+        // {
+        //   image: this.imagenTobilloSelec,
+        //   fit: [300, 300],
+        // },
+        // {
+        //   image: this.imagenTobilloCamara,
+        //   fit: [300, 300],
+        // },
+      ],
+    };
+    pdfMake.createPdf(docDefinition).download('Plan de Estudio.pdf');
   }
 
-
-  // convertirBase64() {
-  //   this.base64.encodeFile(this.imagePie).then((base64File: string) => {
-  //     console.log(base64File);
-  //     this.imagePieB64 = base64File;
-  //   }, (err) => {
-  //     console.log(err);
-  //   });
-  //   this.base64.encodeFile(this.imageTobillo).then((base64File: string) => {
-  //     console.log(base64File);
-  //     this.imageTobilloB64 = base64File;
-  //   }, (err) => {
-  //     console.log(err);
-  //   });
-  //   this.createPdf();
-  // }
+  enviarPorMail() {
+    this.createPdf();
+    this.socialSharing.canShareViaEmail().then(() => {
+      this.socialSharing.shareViaEmail(null, 'Footsite', [this.email], null, null, `base64:Resumen.pdf//${this.pdfObj}`).then(() => {
+        console.log('El mail se envio correctamente');
+      }).catch(() => {
+        console.log('Error al enviar el mail');
+      });
+    }).catch(() => {
+      console.log('Error al tratar utilizar el mail');
+    });
+  }
 
 }

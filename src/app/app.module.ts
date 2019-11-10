@@ -17,6 +17,7 @@ import { environment } from './../environments/environment';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { Fotos } from './fotos';
 import { Base64 } from '@ionic-native/base64/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,8 @@ import { Base64 } from '@ionic-native/base64/ngx';
     Camera,
     EmailComposer,
     Fotos,
-    Base64
+    Base64,
+    SocialSharing,
   ],
   bootstrap: [AppComponent]
 })

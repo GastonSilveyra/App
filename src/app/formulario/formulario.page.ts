@@ -185,4 +185,12 @@ export class FormularioPage implements OnInit {
       });
   }
 
+  enviarPorWhatsapp() {
+    this.socialSharing.shareViaWhatsApp(null, this.imagenPieSelec).then(() => {
+
+    }).catch(() => {
+      console.log('Fallo al enviar por whatsapp');
+    });
+  }
+
 }

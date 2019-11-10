@@ -81,8 +81,7 @@ export class FormularioPage implements OnInit {
     const email = {
       to: this.email,
       attachments: [
-        // `base64:Resumen.pdf//${this.pdfObj}`,
-        this.pdfObj,
+        `base64:Resumen.pdf//${this.pdfObj}`,
       ],
       subject: 'Footsite',
       isHtml: true
@@ -174,20 +173,16 @@ export class FormularioPage implements OnInit {
         // },
       ],
     };
-    pdfMake.createPdf(docDefinition).download('Plan de Estudio.pdf');
+    pdfMake.createPdf(docDefinition).download('Resumen.pdf');
   }
 
   enviarPorMail() {
     this.createPdf();
-    this.socialSharing.canShareViaEmail().then(() => {
-      this.socialSharing.shareViaEmail(null, 'Footsite', [this.email], null, null, `base64:Resumen.pdf//${this.pdfObj}`).then(() => {
+    this.socialSharing.shareViaEmail(null, 'Footsite', [this.email]).then(() => {
         console.log('El mail se envio correctamente');
       }).catch(() => {
         console.log('Error al enviar el mail');
       });
-    }).catch(() => {
-      console.log('Error al tratar utilizar el mail');
-    });
   }
 
 }

@@ -76,7 +76,6 @@ export class FormularioPage implements OnInit {
   }
 
     enviarMail() {
-    this.createPdf();
 
     const email = {
       to: this.email,
@@ -151,52 +150,10 @@ export class FormularioPage implements OnInit {
     this.pdfObj = data;
     console.log('El pdf se creo correctamente');
   });
-  }
-
-  downloadPDF() {
-    const docDefinition = {
-      content: [
-        {
-          image: this.imagenPieSelec,
-          fit: [300, 300],
-        },
-        // {
-        //   image: this.imagenPieCamara,
-        //   fit: [300, 300],
-        // },
-        // {
-        //   image: this.imagenTobilloSelec,
-        //   fit: [300, 300],
-        // },
-        // {
-        //   image: this.imagenTobilloCamara,
-        //   fit: [300, 300],
-        // },
-      ],
-    };
-    pdfMake.createPdf(docDefinition).download('Resumen.pdf');
-  }
-
-  enviarPorMail() {
-    this.socialSharing.canShareViaEmail().then((res) => {
-      this.createPdf();
-      this.socialSharing.shareViaEmail(null, 'Footsite', [this.email], [`base64:Resumen.pdf//` + this.pdfObj]).then(() => {
-        console.log('El mail se envio correctamente');
-      }).catch(() => {
-        console.log('Error al enviar el mail');
-      });
-    }).catch((e) => {
-      console.log('No se puede enviar mail');
-    });
-
-  }
-
-  enviarPorWhatsapp() {
-    this.socialSharing.shareViaWhatsApp(null, `base64:Resumen.pdf//` + this.pdfObj).then(() => {
-
-    }).catch(() => {
-      console.log('Fallo al enviar por whatsapp');
-    });
+    setTimeout(() => {
+      this.enviarMail();
+    },
+    2000);
   }
 
 }

@@ -6,6 +6,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { range } from 'rxjs';
+import { Router } from '@angular/router';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -47,7 +48,7 @@ export class FormularioPage implements OnInit {
   pdfObj = null;
   pdfGenerator = null;
 
-  constructor( private fotos: Fotos, private emailComposer: EmailComposer, private socialSharing: SocialSharing ) {
+  constructor( private fotos: Fotos, private emailComposer: EmailComposer, private router: Router ) {
     for (let index = 0; index < 24; index++) {
       this.talles[index] = this.a;
       this.a++;
@@ -87,9 +88,11 @@ export class FormularioPage implements OnInit {
       isHtml: true
     };
     this.emailComposer.open(email);
+    this.router.navigateByUrl('foto-pie');
   }
 
   createPdf() {
+    const fechaNac = new Date(this.fechaNac);
     const docDefinition = {
       content: [
         { text: new Date().toLocaleTimeString(), alignment: 'left' },
@@ -97,30 +100,42 @@ export class FormularioPage implements OnInit {
         {
           // to treat a paragraph as a bulleted list, set an array of items under the ul key
           ul: [
-            { text: this.nombre },
-            { text: this.apellido },
-            { text: this.telefono },
-            { text: this.fechaNac },
-            { text: this.tipoCalzado },
-            { text: this.talle },
-            { text: this.peso },
-            { text: this.altura },
-            { text: this.prescripcion },
-            { text: this.patologia },
-            { text: this.informeFinal },
+            { text: 'Nombre:' + this.nombre },
+            { text: 'Apellido:' + this.apellido },
+            { text: 'Telefono:' + this.telefono },
+            { text: 'Fecha de nacimiento:' + fechaNac.getDate() + '/' + fechaNac.getMonth() + '/' + fechaNac.getFullYear() },
+            { text: 'Tipo de calzado:' + this.tipoCalzado },
+            { text: 'Talle:' + this.talle },
+            { text: 'Peso:' + this.peso },
+            { text: 'Altura:' + this.altura },
+            { text: 'Prescripcion:' + this.prescripcion },
+            { text: 'Patologia:' + this.patologia },
+            { text: 'Informe Final:' + this.informeFinal },
           ]
+        },
+        {
+          text: 'Imagen de pie seleccionada'
         },
         {
           image: this.imagenPieSelec,
           fit: [300, 300],
         },
         {
+          text: 'Imagen de pie foto'
+        },
+        {
           image: this.imagenPieCamara,
           fit: [300, 300],
         },
         {
+          text: 'Imagen de tobillo seleccionada'
+        },
+        {
           image: this.imagenTobilloSelec,
           fit: [300, 300],
+        },
+        {
+          text: 'Imagen de tobillo foto'
         },
         {
           image: this.imagenTobilloCamara,

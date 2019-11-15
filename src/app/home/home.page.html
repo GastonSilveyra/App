@@ -1,26 +1,45 @@
-<ion-content>
+<ion-content class="ion-padding">
     <div class="img">
-        <img [src]="image" class="img-fluid" alt="Responsive image">
+        <img src="../../assets/logo.png" class="img-fluid" alt="Responsive image">
     </div>
-    <div class="card text-center mt-2" style="width: 18rem;">
+    <div class="card text-center mt-4">
+        form
         <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <input [(ngModel)]="user.email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
-                </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <ion-item>
+                    <ion-label position="floating">E-Mail
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input required name="email" formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid" lines="none">
+                            <ion-text color="danger" class="form-error">
+                                Por favor ingrese una dirección válida
+                            </ion-text>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-item>
+                    <ion-label position="floating">Contraseña
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input type="password" formControlName="password" name="password"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid" lines="none">
+                    <ion-text color="danger" class="form-error">
+                        Por favor ingrese una contraseña
+                    </ion-text>
+                </ion-item>
+                <p class="mt-2">Olvidaste tus datos de inicio de sesión?
+                    <b routerLink="/forgot">
+                        Obtene ayuda.
+                    </b>
+                </p>
+                <button type="button" class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="loginForm?.invalid">Login</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/register">Registrarse</button>
             </form>
-            <form>
-                <div class="form-group">
-                    <input [(ngModel)]="user.password" type="password" name="password" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
-                </div>
-            </form>
-            <p>Olvidaste tus datos de inicio de sesión?
-                <b routerLink="/forgot">
-                                Obtene ayuda.
-                            </b>
-            </p>
-            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onLogin()" [disabled]="!(user.email && user.password)">Login</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/register">Registrarse</button>
         </div>
     </div>
 </ion-content>

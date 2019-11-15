@@ -4,21 +4,38 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <div class="card text-center">
+<ion-content class="ion-padding">
+    <div class="img">
+        <img src="../../assets/logo.png" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="card text-center mt-4">
         <div class="card-body">
             <h4 class="card-title">Regístrate</h4>
-            <form>
-                <div class="form-group mt-4">
-                    <input [(ngModel)]="user.email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
-                </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <ion-item>
+                    <ion-label position="floating">E-Mail
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input required name="email" formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid" lines="none">
+                    <ion-text color="danger" class="form-error">
+                        Por favor ingrese una dirección válida
+                    </ion-text>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Contraseña
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input type="password" formControlName="password" name="password"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="loginForm.controls.password.value !== '' && loginForm.controls.password.untouched && loginForm.controls.password.invalid" lines="none">
+                    <ion-text color="danger" class="form-error">
+                        Por favor ingrese una contraseña
+                    </ion-text>
+                </ion-item>
+                <button type="button" class="btn btn-primary btn-lg btn-block mt-3" [disabled]="loginForm?.invalid" type="submit">Registrarte</button>
             </form>
-            <form>
-                <div class="form-group">
-                    <input [(ngModel)]="user.password" type="password" name="password" class="form-control" aria-describedby="emailHelp" placeholder="Contraseña">
-                </div>
-            </form>
-            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onRegister()">Registrarte</button>
             <p class="font-weight-normal mt-3">Ya tengo una cuenta <span class="font-weight-bold" routerLink="/home">Ingresa acá</span></p>
         </div>
     </div>

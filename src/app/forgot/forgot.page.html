@@ -4,23 +4,31 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div class="row mt-3">
-        <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
-                <h4 class="card-title">Olvidaste tu contraseña?</h4>
-                <form>
-                    <div class="form-group mt-4">
-                        <input [(ngModel)]="email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
-                    </div>
-                </form>
-
-                <button type="button" class="btn btn-primary btn-lg btn-block" (click)="recover()" [disabled]="!email">Recuperar</button>
-
-                <p class="font-weight-normal mt-2">Ya tenes cuenta?
-                    <b class="bold" routerLink="/home">Ingresa aca</b></p>
-            </div>
+<ion-content class="ion-padding">
+    <div class="img">
+        <img src="../../assets/logo.png" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="card text-center mt-4">
+        <div class="card-body">
+            <h4 class="card-title">Olvidaste tu contraseña?</h4>
+            <form [formGroup]="loginForm" (ngSubmit)="recover()">
+                <ion-item>
+                    <ion-label position="floating">E-Mail
+                        <ion-text color="danger">*</ion-text>
+                    </ion-label>
+                    <ion-input required name="email" formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid" lines="none">
+                    <ion-text color="danger" class="form-error">
+                        Por favor ingrese una dirección válida
+                    </ion-text>
+                </ion-item>
+                <button type="button" class="btn btn-primary btn-lg btn-block mt-5" type="submit" [disabled]="loginForm?.invalid">Recuperar</button>
+            </form>
+            <p class="font-weight-normal mt-2">Ya tenes cuenta?
+                <b class="bold" routerLink="/home">Ingresa aca</b></p>
         </div>
     </div>
+
 
 </ion-content>

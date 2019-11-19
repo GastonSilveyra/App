@@ -114,28 +114,32 @@ export class FormularioPage implements OnInit {
           ]
         },
         {
-          text: 'Imagen de pie seleccionada'
+          text: 'Imagen de pie seleccionada',
+          fontSize: 14,
         },
         {
           image: this.imagenPieSelec,
           fit: [300, 300],
         },
         {
-          text: 'Imagen de pie foto'
+          text: 'Imagen de pie foto',
+          fontSize: 14,
         },
         {
           image: this.imagenPieCamara,
           fit: [300, 300],
         },
         {
-          text: 'Imagen de tobillo seleccionada'
+          text: 'Imagen de tobillo seleccionada',
+          fontSize: 14,
         },
         {
           image: this.imagenTobilloSelec,
           fit: [300, 300],
         },
         {
-          text: 'Imagen de tobillo foto'
+          text: 'Imagen de tobillo foto',
+          fontSize: 14,
         },
         {
           image: this.imagenTobilloCamara,
